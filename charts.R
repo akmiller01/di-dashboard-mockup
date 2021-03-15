@@ -27,14 +27,14 @@ dat$quarter_str = factor(dat$quarter_str)
 
 c1_dat = subset(dat,department=="Finance" & indicator %in% c("Non-Overhead Staff","All Staff"))
 
-c1_line = ggplot(c1_dat, aes(x=quarter_str, y=value / 100, group=indicator, color=indicator)) +
+c1 = ggplot(c1_dat, aes(x=quarter_str, y=value / 100, group=indicator, color=indicator)) +
   geom_line() +
   geom_point() +
   scale_color_manual(values=pal[["red"]]) +
   scale_y_continuous(labels=percent) +
   geom_hline(aes(yintercept=target / 100, linetype="Target")) +
   scale_linetype_manual(values=c(2,2)) +
-  labs(x="",y="",linetype="",color="",title="Proportion of staff time spent on projects") +
+  labs(x="",y="",linetype="",color="") +
   guides(color = guide_legend(order = 2),linetype = guide_legend(order = 1)) +
   theme_bw() +
   theme(
@@ -43,17 +43,18 @@ c1_line = ggplot(c1_dat, aes(x=quarter_str, y=value / 100, group=indicator, colo
     axis.ticks = element_blank(),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust=1)
+    axis.text.x = element_text(angle = 45, hjust=1),
+    legend.position="bottom"
     )
 
 c2_dat = subset(dat,department=="Finance" & indicator %in% c("Indirect Overheads","Direct Overheads"))
-ggplot(c2_dat, aes(x=quarter_str, y=value / 100, group=indicator, fill=indicator)) +
+c2 = ggplot(c2_dat, aes(x=quarter_str, y=value / 100, group=indicator, fill=indicator)) +
   geom_bar(stat="identity", position="dodge") +
   scale_fill_manual(values=pal[["purple"]]) +
-  scale_y_continuous(labels=percent) +
+  scale_y_continuous(labels=percent,expand=c(0,0)) +
   geom_hline(aes(yintercept=target / 100, linetype="Target")) +
   scale_linetype_manual(values=c(2,2)) +
-  labs(x="",y="",linetype="",fill="",title="Proportion of staff time spent on projects") +
+  labs(x="",y="",linetype="",fill="") +
   guides(fill = guide_legend(order = 2),linetype = guide_legend(order = 1)) +
   theme_bw() +
   theme(
@@ -62,5 +63,70 @@ ggplot(c2_dat, aes(x=quarter_str, y=value / 100, group=indicator, fill=indicator
     axis.ticks = element_blank(),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust=1)
+    axis.text.x = element_text(angle = 45, hjust=1),
+    legend.position="bottom"
   )
+
+c2 = ggplot(c2_dat, aes(x=quarter_str, y=value / 100, group=indicator, fill=indicator)) +
+  geom_bar(stat="identity", position="dodge") +
+  scale_fill_manual(values=pal[["purple"]]) +
+  scale_y_continuous(labels=percent,expand=c(0,0)) +
+  geom_hline(aes(yintercept=target / 100, linetype="Target")) +
+  scale_linetype_manual(values=c(2,2)) +
+  labs(x="",y="",linetype="",fill="") +
+  guides(fill = guide_legend(order = 2),linetype = guide_legend(order = 1)) +
+  theme_bw() +
+  theme(
+    panel.border = element_blank(),
+    axis.line.x = element_line(color="#443e42"),
+    axis.ticks = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust=1),
+    legend.position="bottom"
+  )
+
+c3_dat = subset(dat,department=="Finance" & indicator %in% c(
+  "Salary as a proportion of income",
+  "Consultants as proportion of income"
+  ))
+c3_dat$percent_of_target = c3_dat$value / c3_dat$target
+c3 = ggplot(c3_dat, aes(x=quarter_str, y=percent_of_target, group=indicator, fill=indicator)) +
+  geom_bar(stat="identity", position="dodge") +
+  scale_fill_manual(values=pal[["yellow"]]) +
+  scale_y_continuous(labels=percent) +
+  labs(x="",y="",linetype="",fill="") +
+  guides(fill=guide_legend(nrow=2)) +
+  theme_bw() +
+  theme(
+    panel.border = element_blank(),
+    axis.line.x = element_line(color="#443e42"),
+    axis.ticks = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust=1),
+    legend.position="bottom"
+  )
+
+c4_dat = subset(dat,department=="Finance" & indicator %in% c(
+  "Average consultant % for year to date (excl GNR)"
+))
+c4 = ggplot(c4_dat, aes(x=quarter_str, y=value / 100, group=indicator, fill=indicator)) +
+  geom_bar(stat="identity", position="dodge") +
+  scale_fill_manual(values=pal[["orange"]]) +
+  scale_y_continuous(labels=percent,expand=c(0,0)) +
+  geom_hline(aes(yintercept=target / 100, linetype="Target")) +
+  scale_linetype_manual(values=c(2,2)) +
+  labs(x="",y="",linetype="",fill="") +
+  theme_bw() +
+  theme(
+    panel.border = element_blank(),
+    axis.line.x = element_line(color="#443e42"),
+    axis.ticks = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust=1),
+    legend.position="none"
+  )
+
+rm(c1_dat, c2_dat, c3_dat, c4_dat, dat, pal)

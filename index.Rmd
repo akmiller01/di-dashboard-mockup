@@ -1,0 +1,43 @@
+---
+title: "DI Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+setwd("/home/alex/git/di-dashboard-mockup")
+source("charts.R")
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Proportion of staff time spent on projects
+
+```{r}
+c1
+```
+
+### Proportion of value of staff time spent on direct and indirect overheads
+
+```{r}
+c2
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Personnel costs as a proportion of income (% of target)
+
+```{r}
+c3
+```
+
+### Consultant costs %, YTD (excluding GNR)
+
+```{r}
+c4
+```
