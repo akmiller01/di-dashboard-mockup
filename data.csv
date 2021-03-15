@@ -1,0 +1,33 @@
+department,indicator,date,value,target
+Finance,Non-Overhead Staff,2020-03-31,82,80
+Finance,Non-Overhead Staff,2020-06-30,81,80
+Finance,Non-Overhead Staff,2020-09-30,79,80
+Finance,Non-Overhead Staff,2020-12-31,83,80
+Finance,All Staff,2020-03-31,72,80
+Finance,All Staff,2020-06-30,71,80
+Finance,All Staff,2020-09-30,66,80
+Finance,All Staff,2020-12-31,69,80
+Finance,Indirect Overheads,2020-03-31,16,15
+Finance,Indirect Overheads,2020-06-30,18,15
+Finance,Indirect Overheads,2020-09-30,18,15
+Finance,Indirect Overheads,2020-12-31,16,15
+Finance,Direct Overheads,2020-03-31,13,15
+Finance,Direct Overheads,2020-06-30,12,15
+Finance,Direct Overheads,2020-09-30,16,15
+Finance,Direct Overheads,2020-12-31,16,15
+Finance,Salary as a proportion of income,2020-03-31,58,65
+Finance,Salary as a proportion of income,2020-06-30,50,65
+Finance,Salary as a proportion of income,2020-09-30,61,65
+Finance,Salary as a proportion of income,2020-12-31,72,65
+Finance,Average salary % for year to date,2020-03-31,58,65
+Finance,Average salary % for year to date,2020-06-30,54,65
+Finance,Average salary % for year to date,2020-09-30,56,65
+Finance,Average salary % for year to date,2020-12-31,59,65
+Finance,Consultants as proportion of income,2020-03-31,10,8
+Finance,Consultants as proportion of income,2020-06-30,14,8
+Finance,Consultants as proportion of income,2020-09-30,14,8
+Finance,Consultants as proportion of income,2020-12-31,16,8
+Finance,Average consultant % for year to date (excl GNR),2020-03-31,8,8
+Finance,Average consultant % for year to date (excl GNR),2020-06-30,9,8
+Finance,Average consultant % for year to date (excl GNR),2020-09-30,10,8
+Finance,Average consultant % for year to date (excl GNR),2020-12-31,10,8
